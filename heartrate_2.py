@@ -103,8 +103,9 @@ def apply_ekf(HR):
     delta_HR = np.zeros(n)
     A = np.zeros(n)
 
-    CT[:4] = HR[0]
-    HR_ma[:4] = np.mean(HR[:4])
+    CT = np.zeros(n)
+    CT[:4] = 36.97 
+    HR_ma[0:4] = [1, 2, 3, 4] #false moving average
     V[3] = 0
 
     for t in range(4, n):
@@ -147,7 +148,7 @@ def main():
 
             print("\nCore Temperature Estimates:")
             for temp in CT:
-                print(f"{temp:.2f} Fahrenheit")
+                print(f"{temp:.2f}°C")
     else:
         print("No heart rate data found in any source.")
 
